@@ -11,7 +11,7 @@ conn = sqlite3.connect(db_name)
 cursor = conn.cursor()
 
 def add_item(item):
-    key = "".join(random.choices(string.ascii_letter, k=10))
+    key = "".join(random.choices(string.ascii_letters, k=10))
     cursor.execute(
         "INSERT INTO items (key, item) VALUES (?, ?)",
         (key, item,)
