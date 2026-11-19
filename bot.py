@@ -19,13 +19,6 @@ def start_handler(message):
     bot.reply_to(message, f"Привет {first_name} {last_name} !")
 
 @bot.message_handler(
-    func=lambda message: True,
-    content_types=["text"]
-)
-def echo(message):
-    bot.reply_to(message, message.text)
-
-@bot.message_handler(
     commands=["add"]
 )
 def add_item(message):
@@ -45,5 +38,13 @@ def list_item(message):
     items = list_item()
     res = ", ".join(name for _, name in items)
     bot.reply_to(message, res)
+
+
+@bot.message_handler(
+    func=lambda message: True,
+    content_types=["text"]
+)
+def echo(message):
+    bot.reply_to(message, message.text)
 
 bot.infinity_polling()
