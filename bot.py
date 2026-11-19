@@ -13,8 +13,6 @@ def start_handler(message):
     print("Сообщение принято")
     bot.reply_to(message, "Привет!")
 
-bot.infinity_polling()
-
 @bot.message_handler(
     func=lambda message: True,
     content_types=["text"]
@@ -22,3 +20,5 @@ bot.infinity_polling()
 def echo(message):
     print(dir(message))
     bot.reply_to(message, message.text)
+
+bot.infinity_polling()
