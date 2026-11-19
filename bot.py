@@ -3,7 +3,7 @@ import os
 import telebot
 from dotenv import load_dotenv
 
-from db import add_item, list_item
+from db import Db
 
 load_dotenv()
 tg_token = os.environ.get("TG_TOKEN")
@@ -25,7 +25,9 @@ def add_item_handler(message):
     parts = message.text.split(" ")
     item = parts[1] if len(parts) > 1 else None
     if item:
-        add_item(item)
+        db = Db()
+        db.add_item(item)
+        db.close()
         bot.reply_to(message, "Элемент добавлен")
     else:
         bot.reply_to(message, "Элемент не добавлен")
@@ -35,7 +37,8 @@ def add_item_handler(message):
     commands=["list"]
 )
 def list_item_handler(message):
-    items = list_item()
+    db = Db()
+    items = db.list_item()
     res = ", ".join(name for _, name in items)
     bot.reply_to(message, res)
 
