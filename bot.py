@@ -16,7 +16,7 @@ def start_handler(message):
 bot.infinity_polling()
 
 @bot.message_handler(
-    func=lambda mes: True,
+    func=lambda message: True,
     content_types=["text"]
 )
 def echo(message):
