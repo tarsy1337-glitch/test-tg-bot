@@ -21,7 +21,7 @@ def start_handler(message):
 @bot.message_handler(
     commands=["add"]
 )
-def add_item(message):
+def add_item_handler(message):
     parts = message.text.split(" ")
     item = parts[1] if len(parts) > 1 else None
     if item:
@@ -34,11 +34,10 @@ def add_item(message):
 @bot.message_handler(
     commands=["list"]
 )
-def list_item(message):
+def list_item_handler(message):
     items = list_item()
     res = ", ".join(name for _, name in items)
     bot.reply_to(message, res)
-
 
 @bot.message_handler(
     func=lambda message: True,
