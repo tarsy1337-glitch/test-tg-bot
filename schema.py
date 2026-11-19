@@ -3,7 +3,7 @@ import os
 
 db_name = os.environ.get("DB_NAME")
 
-conn = sqlite3.connection(db_name)
+conn = sqlite3.connect(db_name)
 cursor = conn.cursor()
 
 def init():
