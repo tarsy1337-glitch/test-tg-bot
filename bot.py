@@ -11,3 +11,5 @@ bot = telebot.TeleBot(tg_token)
 @bot.message_handler(commands=["start", "hello"])
 def start_handler(message):
     bot.reply_to(message, "Привет!")
+
+bot.infinity_polling()
